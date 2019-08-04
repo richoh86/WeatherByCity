@@ -85,34 +85,6 @@ class WeatherController: UIViewController {
         tableView.register(WeatherDetailCell.self, forCellReuseIdentifier: WeatherDetailCell.cellId)
         return tableView
     }()
-
-//    let pressureLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 13)
-//        label.textColor = .black
-//        return label
-//    }()
-//
-//    let humidityLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 13)
-//        label.textColor = .black
-//        return label
-//    }()
-//
-//    let temperatureMinLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 13)
-//        label.textColor = .black
-//        return label
-//    }()
-//
-//    let temperatureMaxLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 13)
-//        label.textColor = .black
-//        return label
-//    }()
     
     // MARK: - Initializer
     init(latitude: Double, longitude: Double, cityName: String) {
@@ -240,18 +212,25 @@ extension WeatherController: UITableViewDataSource {
         case 2:
             cell.leftLabel.text = "바람"
             cell.rightLabel.text = "가시거리"
-            if let speed = self.city?.wind.speed,
-                let visibility = self.city?.visibility {
+            if let speed = self.city?.wind.speed {
                 cell.leftTextLabel.text = "\(speed)m/s"
+            }
+            if let visibility = self.city?.visibility {
                 cell.rightTextLabel.text = "\(visibility/1000)km"
             }
+            
         case 3:
             cell.leftLabel.text = "일출"
             cell.rightLabel.text = "일몰"
             if let sunriseTime = self.city?.sys.sunrise,
-                let sunsetTime = self.city?.sys.sunset {
-                cell.leftTextLabel.text = "\(sunriseTime)"
-                cell.rightTextLabel.text = "\(sunsetTime)"
+                let sunsetTime = self.city?.sys.sunset,
+                    let timeZone = self.city?.timezone {
+                
+                let sunriseTimeStr = Date.UTCToLocal(inputTime: sunriseTime, timeZone: timeZone)
+                let sunsetTimeStr = Date.UTCToLocal(inputTime: sunsetTime, timeZone: timeZone)
+                
+                cell.leftTextLabel.text = "\(sunriseTimeStr)"
+                cell.rightTextLabel.text = "\(sunsetTimeStr)"
             }
         default:
             break
@@ -265,5 +244,17 @@ extension WeatherController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
+    }
+}
+
+// MARK: - Date Extension 날짜, 시간 변환
+extension Date {
+    // UTC to Local Time 변환
+    public static func UTCToLocal(inputTime: Float, timeZone: Int) -> String {
+        let sunriseTimeDate = Date(timeIntervalSince1970: TimeInterval(inputTime))
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "h:mm a"
+        dateFormatter1.timeZone = TimeZone(secondsFromGMT: timeZone)
+        return dateFormatter1.string(from: sunriseTimeDate)
     }
 }

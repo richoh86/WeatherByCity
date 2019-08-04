@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 
 class SearchController: UIViewController {
-
-    // URL: api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=3484af2ead84732c2f27141a44f43042
     
     // 가장 최근에 검색한 도시 이름 UserDefault에 String으로 저장
     fileprivate let recentInputCityNameKey = "recentInputCityNameKey"
@@ -67,6 +65,15 @@ class SearchController: UIViewController {
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // 맵뷰를 탭하면 키보드가 내려가도록 구현
+        let gestrueRecongnizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        mapView.addGestureRecognizer(gestrueRecongnizer)
+    }
+    
+    // 맵뷰를 탭하면 키보드가 내려간다
+    @objc func tapGestureAction(_ gesture: UIGestureRecognizer) {
+        navigationItem.searchController?.searchBar.resignFirstResponder()
     }
     
     // MARK: - MapKit Search By City Name
@@ -82,7 +89,6 @@ class SearchController: UIViewController {
             
             if let err = err {
                 print(err.localizedDescription)
-                print("검색 결과가 없습니다")
                 return
             }
             
@@ -145,6 +151,8 @@ extension SearchController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        
         guard let coordinate = view.annotation?.coordinate,
                 let title = view.annotation?.title,
                     let cityName = title else { return }
@@ -155,4 +163,5 @@ extension SearchController: MKMapViewDelegate {
         let weatherController = WeatherController(latitude: latitude, longitude: longitude, cityName: cityName)
         self.navigationController?.pushViewController(weatherController, animated: true)
     }
+
 }

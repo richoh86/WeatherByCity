@@ -17,6 +17,7 @@ struct City: Decodable {
     var visibility: Int?
     let wind: Wind
     let sys: Sys
+    let timezone: Int
 }
 
 struct Weather: Decodable {
@@ -47,11 +48,11 @@ struct Main: Decodable {
 }
 
 struct Wind: Decodable {
-    let speed: Float
-    let deg: Float
+    var speed: Float?
+    var deg: Float?
 }
 
 struct Sys: Decodable {
-    let sunrise: Int
-    let sunset: Int
+    let sunrise: Float
+    let sunset: Float
 }
