@@ -8,9 +8,9 @@
 - 최저온도, 최고온도, 기압, 습도, 바람, 가시거리, 일출(시간), 일몰(시간)도 확인 가능합니다 
 ~~~
 
-<p align="center"><img width="220" height="400" src="/screenshots/screensho1.png">
-<img width="220" height="400" src="/screenshots/screensho2.png">
-<img width="220" height="400" src="/screenshots/screensho3.png"></p>
+<p align="center"><img width="220" height="400" src="/screenshots/screenshot1.png">
+<img width="220" height="400" src="/screenshots/screenshot2.png">
+<img width="220" height="400" src="/screenshots/screenshot3.png"></p>
 
 ## 기술셋
 
