@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		792FA38D22F5C852003E43F9 /* WeatherDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792FA38C22F5C852003E43F9 /* WeatherDetailCell.swift */; };
+		79AB1CF822F7EE3D00E40D68 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB1CF722F7EE3D00E40D68 /* Extensions.swift */; };
 		79C375D922F18D4200419D50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C375D822F18D4200419D50 /* AppDelegate.swift */; };
 		79C375E022F18D4300419D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79C375DF22F18D4300419D50 /* Assets.xcassets */; };
 		79C375E322F18D4300419D50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79C375E122F18D4300419D50 /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		792FA38C22F5C852003E43F9 /* WeatherDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailCell.swift; sourceTree = "<group>"; };
+		79AB1CF722F7EE3D00E40D68 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		79C375D522F18D4200419D50 /* WeatherByCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherByCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79C375D822F18D4200419D50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79C375DF22F18D4300419D50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				79C375D822F18D4200419D50 /* AppDelegate.swift */,
+				79AB1CF722F7EE3D00E40D68 /* Extensions.swift */,
 				79C375EE22F1963B00419D50 /* API */,
 				79C375ED22F1963500419D50 /* Model */,
 				792FA38B22F5C819003E43F9 /* View */,
@@ -181,6 +184,7 @@
 				79FFE33622F2B8AB00AF6A71 /* City.swift in Sources */,
 				79EF3E9822F2E94400B45654 /* WeatherController.swift in Sources */,
 				792FA38D22F5C852003E43F9 /* WeatherDetailCell.swift in Sources */,
+				79AB1CF822F7EE3D00E40D68 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
